@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link"
+import Image from "next/image"
 import React, {useEffect, useState} from "react"
 import { useRouter } from "next/navigation"
 import axios  from "axios"
@@ -11,7 +12,7 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-  } from "@/components/ui/card"
+} from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -42,43 +43,54 @@ export default function LoginPage() {
     
     
     return (
-        <div className="min-h-screen flex flex-wrap flex-col items-center justify-center">
-           <Card className="w-[300px] sm:w-[350px]">
-             <CardHeader className="space-y-1">
-                <CardTitle className="text-2xl">Login</CardTitle>
-                <CardDescription>
-                Enter your email and password to login
-                </CardDescription>
-            </CardHeader>
-              <CardContent className="grid gap-4">
-                <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                    <Input 
-                        id="email" 
-                        type="email" 
-                        placeholder="m@example.com"
-                        value={user.email}
-                        onChange={(e) => setUser({...user, email:e.target.value})}
-                    />
-                <Link className="text-right text-xs text-slate-500 hover:underline hover:text-slate-300" href='/forgotpassword'>Forgot Password</Link>
-                </div>
-                <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
-                    <Input 
-                        id="password" 
-                        type="password"
-                        value={user.password}
-                        onChange={(e) => setUser({...user, password:e.target.value})}
-                    />
-                </div>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-                <Button disabled={user.email.length >0 && user.password.length >0 ? false : true} onClick={onLogin}>
-                    {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Login"}
-                </Button>
-                <Link href='/signup'><Button variant='outline'>Signup</Button></Link>
-            </CardFooter>
-         </Card>
+
+        <div className="min-h-screen justify-center gap-12 flex flex-col place-items-center">
+            <Image
+                    className="dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+                    src="/main 2.svg"
+                    alt="Next.js Logo"
+                    width={200}
+                    height={50}
+                    priority
+            />
+            <div className="min-h-min flex flex-wrap flex-col items-center justify-center">
+            <Card className="w-[300px] sm:w-[350px]">
+                <CardHeader className="space-y-1">
+                    <CardTitle className="text-2xl">Login</CardTitle>
+                    <CardDescription>
+                    Enter your email and password to login
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="grid gap-4">
+                    <div className="grid gap-2">
+                    <Label htmlFor="email">Email</Label>
+                        <Input 
+                            id="email" 
+                            type="email" 
+                            placeholder="m@example.com"
+                            value={user.email}
+                            onChange={(e) => setUser({...user, email:e.target.value})}
+                        />
+                    <Link className="text-right text-xs text-slate-500 hover:underline hover:text-slate-300" href='/forgotpassword'>Forgot Password</Link>
+                    </div>
+                    <div className="grid gap-2">
+                    <Label htmlFor="password">Password</Label>
+                        <Input 
+                            id="password" 
+                            type="password"
+                            value={user.password}
+                            onChange={(e) => setUser({...user, password:e.target.value})}
+                        />
+                    </div>
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                    <Button disabled={user.email.length >0 && user.password.length >0 ? false : true} onClick={onLogin}>
+                        {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Login"}
+                    </Button>
+                    <Link href='/signup'><Button variant='outline'>Signup</Button></Link>
+                </CardFooter>
+            </Card>
+            </div>
         </div>
         
     )

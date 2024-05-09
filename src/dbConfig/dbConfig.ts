@@ -18,3 +18,15 @@ export async function connect() {
         console.log(err)
     }
 }
+
+
+// import { drizzle } from "drizzle-orm/mysql2";
+// import mysql from "mysql2/promise";
+// const connection = await mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   database: "reservilo",
+//   ...
+
+// });
+// const db = drizzle(connection);
